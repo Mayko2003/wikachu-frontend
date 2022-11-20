@@ -1,0 +1,16 @@
+footer{
+    background: #120C17;
+}
+i{
+    font-size: 30px;
+}
+.social-media{
+    margin: 0px 5px 0px 5px;
+}
+.note{
+    font-style: italic;
+    font-size: 15px;
+}
+.link-light:hover{
+    color: rgba(219, 219, 206, 0.89);
+}
