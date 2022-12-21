@@ -1,3 +1,7 @@
 body {
     background: linear-gradient(to right bottom, #3F2759, #1C1324, #1C1324, #3F2759);
 }
+.logo {
+    height: 2.7em;
+    width: 2.7em;
+}

@@ -1,46 +1,52 @@
-import './footerStyles.css'
 import 'bootstrap-icons/font/bootstrap-icons.css';
+import logo from '../../assets/w-logo.png';
+
 export const Footer = () => {
     return (
-        <>
-            <footer className="navbar navbar-expand-lg navbar-dark bg-dark text-white p-0 todo">
-                <div className="row p-0 m-0">
-                    <div className="col-12 col-md-6 col-lg-4 p-0">
-                        <div className="px-5 py-3 follow-us">
-                            <h2 className="fs-4 fw-bold pt-3">Social Media</h2>
-                            <div className="d-flex justify-content-between py-2 flex-wrap">
-                                <a href="#" className='link-light social-media'><i className="bi bi-instagram fa-10x"></i></a>
-                                <a href="#" className='link-light social-media'><i className="bi bi-facebook"></i></a>
-                                <a href="#" className='link-light social-media'><i className="bi bi-github"></i></a>
-                                <a href="#" className='link-light social-media'><i className="bi bi-twitter"></i></a>
-                                
-                            </div>
-                        </div>
+        <footer className="p-5 shadow-lg d-lg-flex text-light">
+            <div className="col-lg-4">
+                    <div className="d-flex">
+                        <h1>Wikachu <img src={logo} className="logo" alt="" /></h1>
                     </div>
-                    <div className="col-12 col-md-6 col-lg-4 p-0">
-                        <div className="px-5 py-3 follow-us">
-                            <h2 className="fs-4 fw-bold pt-3">About</h2>
-                            <div className="d-flex justify-content-between py-2">
-                                We are a team of two persons who like Pokemon and want to learn React.
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-12 col-md-12 col-lg-4 p-0">
-                        <div className="px-5 py-3 follow-us">
-                            <h2 className="fs-4 fw-bold pt-3">Legal</h2>
-                            <div className="d-flex justify-content-between py-2 flex-column">
-                                <a href="#" className='link-light'>Terms and Privacy</a>
-                                <div className="note">
-                                    Note: Pokémon and Pokémon character names are trademarks of Nintendo.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-12 d-flex justify-content-center follow-us py-2">
-                        <p className="p-2 m-0">© 2022 Copyright: Wikachu</p>
+                    <i className="text-secondary mt-0">
+                        Designed and built with all the love in the world by Wikachu team. © 2021
+                    </i>
+                    <div className="d-flex mt-3">
+                        <a href="https://www.facebook.com" className="link-light me-2" target="_blank"><i
+                            className="bi bi-facebook"></i></a>
+                        <a href="https://www.instagram.com" className="link-light me-2" target="_blank"><i
+                            className="bi bi-instagram"></i></a>
+                        <a href="https://www.linkedin.com" className="link-light" target="_blank"><i className="bi bi-linkedin"></i></a>
                     </div>
                 </div>
-            </footer>
-        </>
+                <div className="col-lg-8 d-flex ms-lg-4">
+                    <div className="col-4 pt-2">
+                        <h4 className="mb-3">About</h4>
+                        <ul className="list-group">
+                            <a className="link-secondary" href="">About Us</a>
+                            <a className="link-secondary" href="">Team</a>
+                            <a className="link-secondary" href="">Contac Us</a>
+
+                        </ul>
+                    </div>
+                    <div className="col-4 pt-2">
+                        <h4 className="mb-3">Legal</h4>
+                        <ul className="list-group">
+                            <a className="link-secondary" href="">Terms and Conditions</a>
+                            <a className="link-secondary" href="">Privacy Policy</a>
+                        </ul>
+                    </div>
+                    <div className="col-4 pt-2">
+                        <h4 className="mb-3">Useful Links</h4>
+                        <ul className="list-group">
+                            <a className="link-secondary" href="">Home</a>
+                            <a className="link-secondary" href="">Pokedex</a>
+                            <a className="link-secondary" href="">Items</a>
+                            <a className="link-secondary" href="">Moves</a>
+                            <a className="link-secondary" href="">Natures</a>
+                        </ul>
+                    </div>
+                </div>
+        </footer>
     )
 } 
