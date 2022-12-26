@@ -1,6 +1,4 @@
-import React from 'react'
-import { AbilitiesList } from './AbilitiesList';
-import { ListTypes } from './ListTypes';
+import { AbilitiesList, TypesList } from './';
 
 export const PokedexData = ({pokemon}) => {
 
@@ -28,7 +26,7 @@ export const PokedexData = ({pokemon}) => {
                 </li>
                 <li className="list-group-item">
                     <h4>Types</h4>
-                    <ListTypes types={types}/>
+                    <TypesList types={types}/>
                 </li>
             </ul>
         </>
