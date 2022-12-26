@@ -1,9 +1,9 @@
 import { getEnviroments } from "../../../helpers/getEnvironments";
-export const getAbility = async (id = null, name = null) => {
+export const getAbility = async (ability) => {
     try {
         const env = getEnviroments();
         const response = await fetch(
-            `${env.VITE_POKEAPI_HOST}/ability/${id || name}`
+            `${env.VITE_POKEAPI_HOST}/ability/${ability}`
         );
         const data = await response.json();
         return data;
