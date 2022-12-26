@@ -1,10 +1,13 @@
 import { useLike } from '../hooks/useLike'
-import './styles.css'
 import { TypeTag } from './TypeTag'
+import { pokemonTypes } from '../data'
+import './styles.css'
+import { types } from '../types/types'
+
 
 export const PokemonCard = ({ pokemon }) => {
 
-    const { onChangeLike } = useLike()
+    const { onChangeLike, likeIcon } = useLike(types.like.pokemon, pokemon)
 
 
     const handlePokemonClick = (e) => {
@@ -22,7 +25,7 @@ export const PokemonCard = ({ pokemon }) => {
         <div className='col-lg-3 col-md-4 p-1' >
             <div className="card bg-transparent shadow h-100">
 
-                <img src="/icons/unliked.png" alt="" className='card-icon mx-auto mt-3' onClick={onChangeLike} />
+                <img src={likeIcon} alt="" className='card-icon mx-auto mt-3' onClick={onChangeLike} />
 
                 <div className='mx-auto'>
                     <img
@@ -41,8 +44,8 @@ export const PokemonCard = ({ pokemon }) => {
 
                     <div className='d-flex mt-auto'>
                         {
-                            pokemon.types.map(type => (
-                                <TypeTag key={type.name} type={type} />
+                            pokemon.types.map(({ type }) => (
+                                <TypeTag key={type.name} type={pokemonTypes[type.name]} />
                             ))
                         }
                     </div>
