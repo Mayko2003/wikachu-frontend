@@ -1,3 +1,6 @@
+export * from './PokemonCard'
+export * from './PokemonList'
+export * from './TypeTag'
 export * from './Abilitie';
 export * from './EvolutionInfo';
 export * from './AbilitiesList';
