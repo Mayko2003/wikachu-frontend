@@ -1,0 +1,20 @@
+img {
+    height: 2.5em;
+    width: 2.5em;
+}
+.namePage {
+    color: #F5E484 !important;
+}
+.custom-nav {
+    background-color: transparent;
+}
+.dropdown-menu {
+    background: transparent !important;
+    padding: 0;
+}
+.dropdown-menu a:hover{
+    background: transparent !important;
+}
+.dropdown-menu a{
+    color: #fff !important;
+}

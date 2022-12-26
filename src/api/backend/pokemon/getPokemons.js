@@ -1,14 +1,16 @@
 import { getEnviroments } from "../../../helpers/getEnvironments";
-export const getAbility = async (ability) => {
+
+export const getPokemons = async () => {
+
     try {
         const env = getEnviroments();
         const response = await fetch(
-            `${env.VITE_POKEAPI_HOST}/ability/${ability}`
+            `${env.VITE_BACKEND_URL}/pokemon`
         );
         const data = await response.json();
         return data;
-    }catch(err){
-        if(err.message === 'Network request failed') return err
-        return new Error('Not Found');
     }
-}
+    catch (error) {
+        return error;
+    }
+};
