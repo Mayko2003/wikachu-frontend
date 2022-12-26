@@ -1,8 +1,8 @@
 import { getEnviroments } from "../../../helpers/getEnvironments";
-export const getSpecie = async (id = null, name = null) => {
+export const getSpecie = async (specie) => {
     const env = getEnviroments();
     const response = await fetch(
-        `${env.VITE_POKEAPI_HOST}/pokemon-species/${id || name}`
+        `${env.VITE_POKEAPI_HOST}/pokemon-species/${specie}`
     );
     const data = await response.json();
     return data;
