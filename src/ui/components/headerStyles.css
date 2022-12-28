@@ -1,20 +1,12 @@
-img {
-    height: 2.5em;
-    width: 2.5em;
-}
-.namePage {
+.navbar-brand {
     color: #F5E484 !important;
 }
-.custom-nav {
-    background-color: transparent;
+
+.dropdown-item {
+    color: rgba(255,255,255,.55) !important;
+    background-color: transparent !important;
 }
-.dropdown-menu {
-    background: transparent !important;
-    padding: 0;
-}
-.dropdown-menu a:hover{
-    background: transparent !important;
-}
-.dropdown-menu a{
-    color: #fff !important;
+
+.dropdown-menu a:hover {
+    background-color: #3F2759 !important;
 }
