@@ -5,11 +5,13 @@ export const useLike = (type = 'Pokemon') => {
 
     const [like, setLike] = useState(false)
 
+    let likeIcon = like ? '/icons/liked.png' : '/icons/unliked.png'
+
     const onChangeLike = (e) => {
 
 
-        if (like) e.target.src = '/icons/unliked.png';
-        else e.target.src = '/icons/liked.png'
+        if (like) e.target.src = likeIcon = '/icons/unliked.png';
+        else e.target.src = likeIcon = '/icons/liked.png'
 
         if (!like) {
             e.target.classList.add('animate__animated', 'animate__bounce')
@@ -24,13 +26,13 @@ export const useLike = (type = 'Pokemon') => {
     }
 
     useEffect(() => {
-        console.log('like', like)
 
     }, [like])
 
 
     return {
         like,
+        likeIcon,
         onChangeLike
     }
 }
