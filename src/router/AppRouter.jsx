@@ -1,21 +1,24 @@
-import { Routes,Route } from "react-router-dom"
-import {Footer, Header} from '../ui/components'
+import { Routes, Route } from "react-router-dom"
+import { Footer, Header } from '../ui/components'
 import { HomePage } from "../wikachu/pages"
 
 export const AppRouter = () => {
+
+
+
     return (
         <>
-            <Header/>
-
+            <Header />
+            
             <Routes>
-                <Route path="/" element={<HomePage/>} />
+                <Route path="/" element={<HomePage />} />
 
 
-                <Route/>
+                <Route />
 
             </Routes>
 
-            <Footer/>
+            <Footer />
         </>
     )
 }
