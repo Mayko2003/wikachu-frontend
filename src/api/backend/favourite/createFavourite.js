@@ -1,14 +1,14 @@
 import { getEnviroments } from "../../../helpers/getEnvironments";
 
-export const checkFavourite = async (user, pokemon, token) => {
-    try {
-        if (!token) throw new Error('No token provided');
+export const createFavourite = async (user,pokemon, token) => {
+    try{
+        if(!token) throw new Error('No token provided');
         const env = getEnviroments();
         const options = {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
+                'Authorization': 'Bearer ' + token
             },
             body: JSON.stringify({
                 user,
@@ -16,12 +16,12 @@ export const checkFavourite = async (user, pokemon, token) => {
             })
         }
         const response = await fetch(
-            `${env.VITE_BACKEND_URL}/favourite/check`, options
+            `${env.VITE_BACKEND_URL}/favourite/create`, options
         );
-        const {data} = await response.json();
+        const data = await response.json();
         return data;
     }
-    catch (error) {
+    catch(error){
         return error;
     }
 }
