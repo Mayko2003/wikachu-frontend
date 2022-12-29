@@ -7,7 +7,7 @@ import { types } from '../types/types'
 
 export const PokemonCard = ({ pokemon }) => {
 
-    const { onChangeLike, likeIcon } = useLike()
+    const { onChangeLike, likeIcon } = useLike(pokemon)
 
 
     const handlePokemonClick = (e) => {
