@@ -1,7 +1,29 @@
+/* Wikachu General Styles */
 body {
     background: linear-gradient(to right bottom, #3F2759, #1C1324, #1C1324, #3F2759);
 }
 .logo {
     height: 2.7em;
     width: 2.7em;
+}
+
+
+/* Cards */
+.card-img{
+    height: 10em;
+    width: 10em;
+}
+.card-icon{
+    height: 3em;
+    width: 3em;
+}
+
+
+/* Buttons */
+.btn-wk-primary{
+    background-color: #3F2759 !important;
+    color: #F8F9FA !important;
+}
+.btn-wk-primary:hover{
+    opacity: 0.8;
 }

@@ -1,9 +1,15 @@
 import './App.css'
+import { AuthProvider } from './auth/context'
+import { AppRouter } from './router/'
 
 
 export const App = () => {
     return (
-        <div>App</div>
+        <>
+            <AuthProvider>
+                <AppRouter />
+            </AuthProvider>
+        </>
     )
 }
 
