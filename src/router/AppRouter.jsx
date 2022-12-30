@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom"
 import { Footer, Header } from '../ui/components'
-import { HomePage } from "../wikachu/pages"
+import { WikachuRoutes } from "../wikachu/routes/WikachuRoutes"
 
 export const AppRouter = () => {
 
@@ -11,10 +11,11 @@ export const AppRouter = () => {
             <Header />
             
             <Routes>
-                <Route path="/" element={<HomePage />} />
+                {/* TODO: add login and register routes */}
 
 
-                <Route />
+                <Route path="/*" element={<WikachuRoutes />} />
+
 
             </Routes>
 
