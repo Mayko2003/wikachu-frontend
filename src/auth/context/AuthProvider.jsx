@@ -4,11 +4,10 @@ import { types } from "../types/types";
 import { AuthContext, authReducer } from "./";
 
 const init = () => {
-    const user = JSON.parse(localStorage.getItem('token'));
+    const token = JSON.parse(localStorage.getItem('token'));
 
     return {
-        logged: !!user,
-        user
+        logged: !!token,
     }
 }
 
@@ -18,11 +17,9 @@ export const AuthProvider = ({ children }) => {
 
     const login = async (username = '', password = '') => {
 
-        const user = { username, password };
-
         const action = {
             type: types.login,
-            payload: user
+            payload: true
         }
 
         const { token } = await loginUser(username, password);
