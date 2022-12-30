@@ -17,9 +17,7 @@ export const PokemonPage = ({ id = 1 }) => {
                     <img src={imagePokemon} alt="" className="w-100" />
                 </div>
                 <div className="col-12 col-md-8 text-light">
-                    <BrowserRouter>
                         <PokemonInfoRouter data={pokemon}/>
-                    </BrowserRouter>
                 </div>
             </div>
         </>
