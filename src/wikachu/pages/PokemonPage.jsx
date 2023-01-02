@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { capitalize } from "../helpers/capitalize";
+import { capitalize } from "../../helpers/";
 import { useGetPokemon } from "../hooks/useGetPokemon";
 import { PokemonRoutes } from "../routes";
 
