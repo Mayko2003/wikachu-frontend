@@ -14,12 +14,13 @@ export const usePokemon = (amount) => {
         let pokemons = []
 
         data.map((pokemon) => {
-            getPokemon(pokemon.id_pokemon).then((poke) => {
+            getPokemon(pokemon.id).then((poke) => {
                 const newPokemon = {
                     types: poke.types,
                     id: poke.id,
                     name: pokemon.name,
-                    image: poke.sprites.other.home.front_default
+                    image: poke.sprites.other.home.front_default,
+                    _id: pokemon._id
                 }
                 pokemons = [...pokemons, newPokemon].sort((a, b) => a.id - b.id)
                 setPokemons(pokemons)
