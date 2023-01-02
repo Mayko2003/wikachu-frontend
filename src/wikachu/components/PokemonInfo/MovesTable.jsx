@@ -1,3 +1,6 @@
+import { capitalize, splitCharacter } from "../../../helpers"
+import { pokemonTypes } from "../../data"
+import { TypeTag } from "../Pokemon/TypeTag"
 
 
 export const MovesTable = ({ moves }) => {
@@ -17,12 +20,24 @@ export const MovesTable = ({ moves }) => {
                 {
                     moves.length ? moves.map(move => (
                         <tr key={`${move.name}-${move.method}`}>
-                            <th scope="row">{move.level}</th>
-                            <td>{move.name}</td>
-                            <td>{move.type}</td>
-                            <td>{move.category}</td>
-                            <td>{move.power ? move.power : '---'}</td>
-                            <td>{move.accuracy ? move.accuracy : '---'}</td>
+                            <th scope="row">
+                                {move.level}
+                            </th>
+                            <td>
+                                {capitalize(splitCharacter(move.name, '-'))}
+                            </td>
+                            <td>
+                                <TypeTag type={pokemonTypes[move.type]} />
+                            </td>
+                            <td>
+                                <img src={`/icons/${move.category}_attack_icon.jpg`} alt="category" className="table-icon" />
+                            </td>
+                            <td>
+                                {move.power ? move.power : '---'}
+                            </td>
+                            <td>
+                                {move.accuracy ? move.accuracy : '---'}
+                            </td>
                         </tr>
                     )) :
                         <tr>
