@@ -1,6 +1,12 @@
 /* Wikachu General Styles */
+/* fonts */
+@import url('https://fonts.googleapis.com/css2?family=East+Sea+Dokdo&display=swap');
+
+
 body {
     background: linear-gradient(to right bottom, #3F2759, #1C1324, #1C1324, #3F2759);
+    /* font-family: 'East Sea Dokdo', cursive;
+    font-size: 16px; */
 }
 .logo {
     height: 2.7em;
