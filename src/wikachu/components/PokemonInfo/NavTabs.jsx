@@ -1,6 +1,6 @@
 import { NavLink, useParams } from 'react-router-dom'
 
-export const Navbar = () => {
+export const NavTabs = () => {
 
     const { id_name } = useParams();
 

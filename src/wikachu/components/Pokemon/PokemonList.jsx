@@ -1,5 +1,5 @@
-import { usePokemon } from "../hooks/usePokemon"
-import { PokemonCard } from "./PokemonCard"
+import { usePokemon } from "../../hooks"
+import { PokemonCard } from "./"
 
 
 export const PokemonList = ({amount}) => {
