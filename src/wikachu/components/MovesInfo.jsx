@@ -1,11 +1,11 @@
-import { useMoves } from "../hooks/useMoves"
+import { useMovesPokemon } from "../hooks/useMovesPokemon"
 import { MovesTable } from "./MovesTable";
 import { filterMovesByMethod } from "../helpers/filterMovesByMethod";
 import { Loading } from "../../ui/components/Loading";
 
 export const MovesInfo = ({ moves }) => {
 
-    const { data, isLoading } = useMoves(moves);
+    const { data, isLoading } = useMovesPokemon(moves);
 
 
     return (
