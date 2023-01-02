@@ -1,4 +1,4 @@
-import { capitalize } from "../helpers/capitalize"
+import { capitalize } from "../../helpers"
 
 export const Abilitie = ({name, isHidden}) => {
   return (

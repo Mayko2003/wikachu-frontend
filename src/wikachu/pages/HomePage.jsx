@@ -1,4 +1,4 @@
-import { PokemonList } from '../components/PokemonList'
+import { PokemonList } from '../components/Pokemon'
 import runningPikachu from '/assets/running-pikachu.gif'
 
 export const HomePage = () => {

@@ -1,4 +1,4 @@
-import { Abilitie } from "./Abilitie"
+import { Abilitie } from "./"
 
 export const AbilitiesList = ({ abilities }) => {
   return (

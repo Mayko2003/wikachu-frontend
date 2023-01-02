@@ -1,8 +1,6 @@
-import { useLike } from '../hooks/useLike'
-import { TypeTag } from './TypeTag'
-import { pokemonTypes } from '../data'
-import './styles.css'
-import { types } from '../types/types'
+import { useLike } from '../../hooks/useLike'
+import { TypeTag } from './'
+import { pokemonTypes } from '../../data'
 
 
 export const PokemonCard = ({ pokemon }) => {

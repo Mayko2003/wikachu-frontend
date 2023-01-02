@@ -1,4 +1,5 @@
-import { AbilitiesList, TypesList } from './';
+import { TypesList } from '../Pokemon';
+import { AbilitiesList } from './';
 import './styles.css'
 
 export const PokedexData = ({ pokemon }) => {
