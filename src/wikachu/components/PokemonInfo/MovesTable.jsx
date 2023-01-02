@@ -3,12 +3,12 @@ import { pokemonTypes } from "../../data"
 import { TypeTag } from "../Pokemon/TypeTag"
 
 
-export const MovesTable = ({ moves }) => {
+export const MovesTable = ({ moves, scope }) => {
     return (
         <table className="table text-white">
             <thead>
                 <tr>
-                    <th scope="col">Lvl.</th>
+                    {scope && <th scope="col">{scope}</th>}
                     <th scope="col">Move</th>
                     <th scope="col">Type</th>
                     <th scope="col">Cat.</th>
@@ -20,9 +20,12 @@ export const MovesTable = ({ moves }) => {
                 {
                     moves.length ? moves.map(move => (
                         <tr key={`${move.name}-${move.method}`}>
-                            <th scope="row">
-                                {move.level}
-                            </th>
+                            {
+                                scope &&
+                                <th scope="row">
+                                    {move.level}
+                                </th>
+                            }
                             <td>
                                 {capitalize(splitCharacter(move.name, '-'))}
                             </td>
