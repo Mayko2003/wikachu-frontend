@@ -1,6 +1,6 @@
 import { getEnviroments } from "../../../helpers/getEnvironments";
 
-export const checkFavourite = async (user, pokemon, token) => {
+export const checkFavourite = async (user, obj, token) => {
     try {
         if (!token) throw new Error('No token provided');
         const env = getEnviroments();
@@ -12,7 +12,7 @@ export const checkFavourite = async (user, pokemon, token) => {
             },
             body: JSON.stringify({
                 user,
-                pokemon
+                obj
             })
         }
         const response = await fetch(
