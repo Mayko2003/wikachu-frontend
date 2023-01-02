@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+import { capitalize } from '../../../helpers'
 import { useLike } from '../../hooks'
 import { TypesList } from './TypesList'
 
@@ -35,11 +37,11 @@ export const PokemonCard = ({ pokemon }) => {
                 <div className="card-body d-flex flex-column">
                     <h5 className='text-muted text-center'>#{pokemon.id}</h5>
 
-                    <a href="" className='nav-link link-secondary fs-2 p-0'>
-                        {pokemon.name}
-                    </a>
+                    <Link to={`/pokemon/${pokemon.name}`} className='nav-link link-secondary fs-2 p-0'>
+                        {capitalize(pokemon.name)}
+                    </Link>
 
-                    <div className='d-flex mt-auto'>
+                    <div className='mt-auto'>
                         <TypesList types={pokemon.types} />
                     </div>
                 </div>
