@@ -13,16 +13,16 @@ export const MovesInfo = ({ moves }) => {
             <div className="animate__animated animate__fadeInUp">
                 <h2>Moves</h2>
                 <div className="row m-0 glass-card p-2 ">
-                    <div className="col-lg-6 d-flex flex-column h-0">
+                    <div className="col-xl-6 d-flex flex-column h-0">
                         <h3>Level Up</h3>
-                        <MovesTable moves={filterMovesByMethod(data, 'level-up')} />
+                        <MovesTable moves={filterMovesByMethod(data, 'level-up')} scope='Lvl.' />
                     </div>
-                    <div className="col-lg-6">
+                    <div className="col-xl-6">
                         <h3>Machine</h3>
-                        <MovesTable moves={filterMovesByMethod(data, 'machine')} />
+                        <MovesTable moves={filterMovesByMethod(data, 'machine')} scope='TM/HMO' />
 
                     </div>
-                    <div className="col-lg-6 mt-2">
+                    <div className="col-xl-6 mt-2">
                         <h3>Egg Move</h3>
                         <MovesTable moves={filterMovesByMethod(data, 'egg')} />
 
