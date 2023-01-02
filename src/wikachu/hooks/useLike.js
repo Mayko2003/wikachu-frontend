@@ -3,23 +3,30 @@ import { likeReducer } from '../context/likeReducer'
 import { checkFavourite, createFavourite, deleteFavourite } from '../../api/backend/favourite/'
 import { AuthContext } from '../../auth/context';
 import { types } from '../types/types';
+import { useNavigate } from 'react-router-dom';
 
-const init = async (user, pokemon) => {
-    //console.log(user,pokemon)
-    const {liked} = await checkFavourite(user._id, pokemon._id, JSON.parse(localStorage.getItem('token')));
+const init = async (user, obj, token) => {
+    const { liked } = await checkFavourite(user._id, obj, token);
     return liked;
 }
 
-export const useLike = (pokemon) => {
+export const useLike = (obj, type = 'Pokemon') => {
 
-    const { user } = useContext(AuthContext)
+    const { logged, getUser, getToken } = useContext(AuthContext)
+
+    const navigate = useNavigate()
 
 
     const [like, dispatch] = useReducer(likeReducer, false)
 
     let likeIcon = like ? '/icons/liked.png' : '/icons/unliked.png'
 
-    const onChangeLike = async(e) => {
+    const onChangeLike = async (e) => {
+        if (!logged) {
+            navigate('/login')
+            return;
+        }
+
 
 
         if (like) e.target.src = likeIcon = '/icons/unliked.png';
@@ -34,8 +41,10 @@ export const useLike = (pokemon) => {
             }, 1000)
         }
 
-        if (like) await deleteFavourite(user._id, pokemon._id, JSON.parse(localStorage.getItem('token')))
-        else await createFavourite(user._id, pokemon._id, JSON.parse(localStorage.getItem('token')))
+        const user = await getUser()
+
+        if (like) await deleteFavourite(user._id, obj, getToken())
+        else await createFavourite(user._id, obj, type, getToken())
 
         dispatch({
             type: like ? types.delete : types.create
@@ -43,19 +52,18 @@ export const useLike = (pokemon) => {
 
     }
 
-    const manageFavourite = async () => {
-        if (like) await deleteFavourite(user._id, pokemon._id, JSON.parse(localStorage.getItem('token')))
-        else await createFavourite(user._id, pokemon._id, JSON.parse(localStorage.getItem('token')))
-    }
-
 
     useEffect(() => {
-        
-        init(user, pokemon).then((liked) => {
-            dispatch({
-                type: liked ? types.create : types.delete
+        if (logged) {
+            getUser().then((user) => {
+                init(user, obj, getToken()).then((liked) => {
+                    dispatch({
+                        type: liked ? types.create : types.delete
+                    })
+                })
             })
-        })
+        }
+
     }, [])
 
 
