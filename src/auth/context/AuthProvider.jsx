@@ -22,11 +22,14 @@ export const AuthProvider = ({ children }) => {
             payload: true
         }
 
-        const { token } = await loginUser(username, password);
+        const { token , message, type} = await loginUser(username, password);
 
-        localStorage.setItem('token', JSON.stringify(token));
+        if(token) localStorage.setItem('token', JSON.stringify(token));
 
         dispatch(action);
+
+        if(message) return { type, message};
+        return {};
     }
 
     const logout = () => {
