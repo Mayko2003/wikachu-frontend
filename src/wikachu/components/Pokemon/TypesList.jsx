@@ -1,11 +1,12 @@
-import { Type } from "./Type"
+import { TypeTag } from "./"
+import { pokemonTypes } from "../../data"
 
 export const TypesList = ({types}) => {
   return (
     <div className="text-light">
         {
             types?.map(({type})=>(
-                <Type key={type.name} name={type.name}/>
+                <TypeTag key={type.name} type={pokemonTypes[type.name]}/>
             ))
         }
     </div>

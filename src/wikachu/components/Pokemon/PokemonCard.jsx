@@ -1,8 +1,5 @@
-import { useLike } from '../hooks/useLike'
-import { TypeTag } from './TypeTag'
-import { pokemonTypes } from '../data'
-import './styles.css'
-import { types } from '../types/types'
+import { useLike } from '../../hooks'
+import { TypesList } from './TypesList'
 
 
 export const PokemonCard = ({ pokemon }) => {
@@ -43,11 +40,7 @@ export const PokemonCard = ({ pokemon }) => {
                     </a>
 
                     <div className='d-flex mt-auto'>
-                        {
-                            pokemon.types.map(({ type }) => (
-                                <TypeTag key={type.name} type={pokemonTypes[type.name]} />
-                            ))
-                        }
+                        <TypesList types={pokemon.types} />
                     </div>
                 </div>
             </div>
