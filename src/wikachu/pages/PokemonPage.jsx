@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { capitalize } from "../helpers/capitalize";
 import { useGetPokemon } from "../hooks/useGetPokemon";
-import { PokemonRoutes } from "../routes/PokemonRoutes";
+import { PokemonRoutes } from "../routes";
 
 export const PokemonPage = () => {
 

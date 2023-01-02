@@ -1,5 +1,5 @@
-import { TypeTag } from "./TypeTag"
-import { pokemonTypes } from "../data"
+import { TypeTag } from "./"
+import { pokemonTypes } from "../../data"
 
 export const TypesList = ({types}) => {
   return (

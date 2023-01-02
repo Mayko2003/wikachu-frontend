@@ -1,4 +1,4 @@
-import { getMinMaxStats } from "../helpers/getMinMaxStats";
+import { getMinMaxStats } from "../../helpers";
 
 export const StatsInfo = ({ stats }) => {
 

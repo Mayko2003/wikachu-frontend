@@ -1,5 +1,4 @@
-import { useLike } from '../hooks/useLike'
-import './styles.css'
+import { useLike } from '../../hooks'
 import { TypesList } from './TypesList'
 
 
