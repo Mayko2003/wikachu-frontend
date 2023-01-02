@@ -8,4 +8,4 @@ export * from './TypesList';
 export * from './MovesInfo';
 export * from './PokedexData';
 export * from './StatsInfo';
-export * from './Type';
+export *  from './MovesTable'
