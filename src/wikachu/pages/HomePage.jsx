@@ -18,7 +18,7 @@ export const HomePage = () => {
             </div>
 
             <div className='mt-5'>
-                <h1>Popular Pokemons</h1>
+                <h1 className='ms-lg-5 text-center text-lg-start mb-5'>Popular Pokemons</h1>
                 <PokemonList amount={'Popular'} />
             </div>
 
