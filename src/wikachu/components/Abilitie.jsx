@@ -1,10 +1,11 @@
+import { capitalize } from "../helpers/capitalize"
 
 export const Abilitie = ({name, isHidden}) => {
   return (
-    <li className="text-dark">
-        {name}
+    <li className="">
+        {capitalize(name)}
         {
-          isHidden && <strong className="text-dark"> (hidden ability) </strong> 
+          isHidden && <strong className=""> (hidden ability) </strong> 
         }
     </li>
   )

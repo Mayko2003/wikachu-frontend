@@ -6,7 +6,7 @@ export const WikachuRoutes = () => {
         <Routes>
             <Route path="/" element={<HomePage />} />
 
-            <Route path="/pokemon/:id_name" element={<PokemonPage />} />
+            <Route path="/pokemon/:id_name/*" element={<PokemonPage />} />
         </Routes>
     )
 }
