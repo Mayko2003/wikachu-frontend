@@ -1,19 +1,21 @@
 import { usePokemon } from "../../hooks"
 import { PokemonCard } from "./"
+import { Loading } from '../../../ui/components'
 
 
-export const PokemonList = ({amount}) => {
+export const PokemonList = ({ amount }) => {
 
-    const { pokemons } = usePokemon(amount);
+    const { data, isLoading } = usePokemon(amount);
 
 
     return (
         <div className="row mx-auto col-md-8 animate__animated animate__fadeIn">
             {
-                pokemons.length > 0 &&
-                pokemons.map(pokemon => (
-                    <PokemonCard key={pokemon.id} pokemon={pokemon} />
-                ))
+                !isLoading ?
+                    data.map(pokemon => (
+                        <PokemonCard key={pokemon.id} pokemon={pokemon} />
+                    )) :
+                    <Loading />
             }
         </div>
     )
