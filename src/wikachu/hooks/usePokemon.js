@@ -3,7 +3,10 @@ import { getPokemons, getPopular } from '../../api/backend/pokemon'
 import { getPokemon } from '../../api/pokemonAPI/Pokemon'
 
 export const usePokemon = (amount) => {
-    const [pokemons, setPokemons] = useState([])
+    const [pokemons, setPokemons] = useState({
+        isLoading: true,
+        data: []
+    })
 
     const getData = async () => {
         let res
@@ -23,18 +26,26 @@ export const usePokemon = (amount) => {
                     _id: pokemon._id
                 }
                 pokemons = [...pokemons, newPokemon].sort((a, b) => a.id - b.id)
-                setPokemons(pokemons)
+                setPokemons({
+                    isLoading: false,
+                    data: pokemons
+                })
             })
         })
     }
 
     useEffect(() => {
-        getData();
+        getData().then(() => {
+            setPokemons(prev => ({
+                ...prev,
+                isLoading: false
+            }))
+        })
 
     }, [])
 
 
     return {
-        pokemons
+        ...pokemons
     }
 }
