@@ -3,11 +3,13 @@ import { capitalize } from "../../helpers/";
 import { useGetPokemon } from "../hooks/useGetPokemon";
 import { PokemonRoutes } from "../routes";
 
+import {useEffect} from 'react'
+
 export const PokemonPage = () => {
 
     const { id_name } = useParams();
 
-    const { pokemon } = useGetPokemon(id_name);
+    const { pokemon, specie } = useGetPokemon(id_name);
 
     const sprites = {
         home: {
@@ -31,6 +33,7 @@ export const PokemonPage = () => {
             }
         }
     }
+    
 
     return (
         <>
@@ -41,7 +44,7 @@ export const PokemonPage = () => {
                     <img src={sprites.home.frontDefault} alt="" className="img-front-pokemon img-fluid" />
                 </div>
                 <div className="col-12 col-lg-8 text-light ">
-                    <PokemonRoutes data={pokemon} />
+                    <PokemonRoutes data={{...pokemon,specie: specie}} />
                 </div>
             </div>
         </>
