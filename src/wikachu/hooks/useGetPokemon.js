@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getPokemon } from "../../api/pokemonAPI/Pokemon";
+import { getPokemon, getSpecie } from "../../api/pokemonAPI/Pokemon";
 
 export const useGetPokemon = (id) => {
     
@@ -7,10 +7,14 @@ export const useGetPokemon = (id) => {
     
     const [isLoading, setIsLoading] = useState(true);
 
+    const [specie, setSpecie] = useState({});
+
     const getData = async () => {
         const pokemon = await getPokemon(id);
+        const specie = await getSpecie(id)
         setPokemon(pokemon);
         setIsLoading(false);
+        setSpecie(specie);
     }
 
     useEffect(() => {
@@ -21,5 +25,6 @@ export const useGetPokemon = (id) => {
     return {
         pokemon,
         isLoading,
+        specie
     }
 }
