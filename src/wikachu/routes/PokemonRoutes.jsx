@@ -3,6 +3,7 @@ import { EvolutionInfo, MovesInfo, PokedexData, StatsInfo, NavTabs } from '../co
 import { TrainingInfo } from '../components/PokemonInfo/TrainingInfo'
 import { BreedingInfo } from '../components/PokemonInfo/BreedingInfo'
 import { getGender } from '../helpers'
+import { TypesDefensesInfo } from '../components/PokemonInfo/TypesDefensesInfo'
 export const PokemonRoutes = ({ data }) => {
 
 
@@ -16,6 +17,7 @@ export const PokemonRoutes = ({ data }) => {
                 <Route path='moves' element={<MovesInfo moves={data.moves} />} />
                 <Route path='training' element={<TrainingInfo info={{ ...data.specie, base_exp: data.base_experience, stats: data.stats }} />} />
                 <Route path='breeding' element={<BreedingInfo info={{ ...data.specie, gender: getGender(data.specie.gender_rate) }} />} />
+                <Route path='defenses' element={<TypesDefensesInfo types={data.types} />} />
             </Routes>
         </>
     )
