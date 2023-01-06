@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { ErrorMessage } from '../components';
 import { AuthContext } from '../context';
 
@@ -42,7 +42,7 @@ export const LoginPage = () => {
 
           <label htmlFor="password" className="form-label">Password</label>
 
-          <input type="text" className="form-control" id="password" placeholder="" {...register("password", { required: 'Password is required' })} />
+          <input type="password" className="form-control" id="password" placeholder="" {...register("password", { required: 'Password is required' })} />
 
           {
             errors.password && <ErrorMessage errors={errors} name="password" />
@@ -54,7 +54,7 @@ export const LoginPage = () => {
 
         <button type="submit" className="btn btn-primary w-100 mt-2 mb-2">Log in</button>
 
-        <div className='text-center'>Or sign up <a href="#" className="link-secondary text-decoration-none">here</a></div>
+        <div className='text-center'>Or sign up <Link to='/register' className="link-secondary text-decoration-none">here</Link></div>
 
       </form>
     </div>
