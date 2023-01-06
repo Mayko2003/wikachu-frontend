@@ -1,6 +1,7 @@
-import { Route, Routes } from 'react-router-dom'
+import { Navigate, Route, Routes } from 'react-router-dom'
 import { PokemonPage, HomePage } from '../pages'
 import { PokedexPage } from '../pages/PokedexPage'
+import { Page404 } from '../../ui/pages/Page404'
 
 export const WikachuRoutes = () => {
     return (
@@ -10,7 +11,8 @@ export const WikachuRoutes = () => {
             <Route path="/pokemon/:id_name/*" element={<PokemonPage />} />
 
             <Route path='/pokedex' element={<PokedexPage />} />
-            
+
+            <Route path='/*' element={<Page404 />} />
         </Routes>
     )
 }
