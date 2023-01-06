@@ -24,9 +24,10 @@ export const AuthProvider = ({ children }) => {
 
         const { token , message, type} = await loginUser(username, password);
 
-        if(token) localStorage.setItem('token', JSON.stringify(token));
-
-        dispatch(action);
+        if(token) {
+            localStorage.setItem('token', JSON.stringify(token));
+            dispatch(action);
+        }
 
         if(message) return { type, message};
         return {};
