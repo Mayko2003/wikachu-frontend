@@ -30,6 +30,24 @@ export const NavTabs = () => {
             >
                 Moves
             </NavLink>
+            <NavLink
+                className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
+                to={`/pokemon/${id_name}/training`}
+            >
+                Training
+            </NavLink>
+            <NavLink
+                className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
+                to={`/pokemon/${id_name}/breeding`}
+            >
+                Breeding
+            </NavLink>
+            <NavLink
+                className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
+                to={`/pokemon/${id_name}/defenses`}
+            >
+                Types Defenses
+            </NavLink>
         </ul>
     )
 }
