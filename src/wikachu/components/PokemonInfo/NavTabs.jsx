@@ -42,6 +42,12 @@ export const NavTabs = () => {
             >
                 Breeding
             </NavLink>
+            <NavLink
+                className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
+                to={`/pokemon/${id_name}/defenses`}
+            >
+                Types Defenses
+            </NavLink>
         </ul>
     )
 }
