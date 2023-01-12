@@ -9,15 +9,16 @@ export const LoginPage = () => {
   const { register, handleSubmit, formState: { errors }, setError } = useForm({
     defaultValues: {
       username: '',
-      password: ''
+      password: '',
+      email: ''
     }
   });
   const { login } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  const onSubmit = async ({ username, password }) => {
+  const onSubmit = async ({ username, password, email }) => {
 
-    const { type, message } = await login(username, password);
+    const { type, message } = await login(username, password, email);
 
     if (type && message) setError(type, { type: "custom", message })
     else navigate('/');
@@ -46,6 +47,18 @@ export const LoginPage = () => {
 
           {
             errors.password && <ErrorMessage errors={errors} name="password" />
+          }
+
+        </div>
+
+        <div className="mb-3">
+
+          <label htmlFor="email" className="form-label">Email</label>
+
+          <input type="email" className="form-control" id="email" placeholder="" {...register("email", { required: 'Email is required' })} />
+
+          {
+            errors.password && <ErrorMessage errors={errors} name="email" />
           }
 
         </div>

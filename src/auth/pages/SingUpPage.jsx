@@ -47,7 +47,7 @@ export const SingUpPage = () => {
 
                     <label htmlFor="password" className="form-label">Password</label>
 
-                    <input type="text" className="form-control" id="password" placeholder="" {...register("password", { required: 'Password is required' , 
+                    <input type="password" className="form-control" id="password" placeholder="" {...register("password", { required: 'Password is required' , 
                     pattern: {value: /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/, message:'At least 8 characters, upper and lower case letters, number and a symbol'} })} />
 
                     {
