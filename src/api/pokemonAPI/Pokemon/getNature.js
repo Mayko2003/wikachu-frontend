@@ -1,6 +1,6 @@
 import { getEnviroments } from "../../../helpers/getEnvironments";
 
-export const getNature = async (naturel) => {
+export const getNature = async (nature) => {
     try{
         const env = getEnviroments();
         const response = await fetch(
