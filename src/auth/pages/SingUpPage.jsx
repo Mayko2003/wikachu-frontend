@@ -4,17 +4,19 @@ import { useNavigate } from "react-router-dom";
 import { createUser } from "../../api/backend/user";
 import { ErrorMessage } from "../components";
 import { AuthContext } from "../context";
-import { FaFacebook, FaGoogle, FaTwitter } from 'react-icons/fa'
+import { FaGoogle } from 'react-icons/fa'
+
 
 
 export const SingUpPage = () => {
     const { register, handleSubmit, formState: { errors }, setError } = useForm({
         defaultValues: {
             username: '',
-            password: ''
+            password: '',
+            google: '',
         }
     });
-    const { login } = useContext(AuthContext);
+    const { login, signUpWithGoogle } = useContext(AuthContext);
     const navigate = useNavigate();
 
     const onSubmit = async ({ username, password }) => {
@@ -27,6 +29,11 @@ export const SingUpPage = () => {
             navigate('/');
         }
     };
+
+    const submitGoogle = async() => {
+        const { error } = await signUpWithGoogle();
+        if(error) setError('google',{type:'custom',message: error});
+    }
 
     return (
         <div className='mt-4'>
@@ -58,15 +65,15 @@ export const SingUpPage = () => {
 
                 <button type="submit" className="btn btn-primary w-100 mt-2 mb-2">Sign Up</button>
 
-                <div className="text-center m-2">Or</div>
-
-                <div className="text-center">
-                    <a href="https://www.facebook.com" className="link-light me-2" target="_blank"><FaFacebook size={23}/></a>
-                    <a href="https://www.google.com" className="link-light me-2" target="_blank"><FaGoogle size={23}/></a>
-                    <a href="https://www.twitter.com" className="link-light" target="_blank"><FaTwitter size={23}/></a>
-                </div>    
+                <div className="text-center m-2">Or</div>   
 
             </form>
+            <div className="text-center">
+                    <button className="btn btn-primary" onClick={submitGoogle} {...register("google")}><FaGoogle size={23}/></button>
+                    {
+                        errors.google && <ErrorMessage errors={errors} name="google" />
+                    }
+            </div> 
         </div>
     )
 }
