@@ -58,7 +58,7 @@ export const LoginPage = () => {
           <input type="email" className="form-control" id="email" placeholder="" {...register("email", { required: 'Email is required' })} />
 
           {
-            errors.password && <ErrorMessage errors={errors} name="email" />
+            errors.email && <ErrorMessage errors={errors} name="email" />
           }
 
         </div>
