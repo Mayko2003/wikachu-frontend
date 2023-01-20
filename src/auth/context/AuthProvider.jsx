@@ -25,9 +25,9 @@ export const AuthProvider = ({ children }) => {
             payload: true
         }
 
-        const { token, message, type } = await loginUser(username, password);
+        const { token , message, type} = await loginUser(username, password);
 
-        if (token) {
+        if(token) {
             localStorage.setItem('token', JSON.stringify(token));
             dispatch(action);
         }

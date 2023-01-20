@@ -1,2 +1,5 @@
 export * from './pokemonTypes'
 export * from './pokemonsPreviewExample'
+export * from './typeDefenses'
+export * from './typeFlavors'
+export * from './typeStats'
