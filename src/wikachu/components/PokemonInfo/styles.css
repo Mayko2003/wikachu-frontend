@@ -41,3 +41,27 @@
     width: 2em;
     height: 2em;
 }
+
+@media only screen and (min-width: 1200px) {
+    .table-container {
+        display: grid;
+        grid-template-columns: repeat(2, [col-start] 1fr);
+        grid-template-rows: repeat(3,fit-content) auto;
+    }
+    .table-level {
+        width: 100%;
+        grid-column: col-start / 2;
+    }
+
+    .table-machine {
+        width: 100%;
+        grid-column: col-start 2 / 3;
+        grid-row: 1 / 4;
+    }
+
+    .table-egg {
+        width: 100%;
+        grid-column: col-start / 2;
+        grid-row: 2;
+    }
+}
