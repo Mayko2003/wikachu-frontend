@@ -26,9 +26,9 @@ export const NaturePage = () => {
                 !isLoading ?
                     <>
                         <div className="row align-items-center m-0">
-                            <h1>{capitalize(name)}</h1>
-                            <div className="col-12">
-                                <ul className="list-group">
+                            <h1 className="text-center mt-5 mb-3">{capitalize(name)}</h1>
+                            <div className="col-8 mx-auto">
+                                <ul className="list-group glass-card">
                                     <li className="list-group-item bg-transparent text-light">
                                         <strong>Decreased stat:</strong>
                                         {
@@ -57,9 +57,9 @@ export const NaturePage = () => {
                                         }
                                         {
                                             !berriesDisliked.isLoading ?
-                                            <BerryList berries={berriesDisliked?.data}/>
-                                            :
-                                            <Loading/>
+                                                <BerryList berries={berriesDisliked?.data} />
+                                                :
+                                                <Loading />
                                         }
                                     </li>
                                     <li className="list-group-item bg-transparent text-light">
@@ -72,9 +72,9 @@ export const NaturePage = () => {
                                         }
                                         {
                                             !berriesLiked.isLoading ?
-                                            <BerryList berries={berriesLiked?.data}/>
-                                            :
-                                            <Loading/>   
+                                                <BerryList berries={berriesLiked?.data} />
+                                                :
+                                                <Loading />
                                         }
                                     </li>
                                 </ul>
