@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { ErrorMessage } from '../components';
 import { AuthContext } from '../context';
 
@@ -9,15 +9,16 @@ export const LoginPage = () => {
   const { register, handleSubmit, formState: { errors }, setError } = useForm({
     defaultValues: {
       username: '',
-      password: ''
+      password: '',
+      email: ''
     }
   });
   const { login } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  const onSubmit = async ({ username, password }) => {
+  const onSubmit = async ({ username, password, email }) => {
 
-    const { type, message } = await login(username, password);
+    const { type, message } = await login(username, password, email);
 
     if (type && message) setError(type, { type: "custom", message })
     else navigate('/');
@@ -42,10 +43,22 @@ export const LoginPage = () => {
 
           <label htmlFor="password" className="form-label">Password</label>
 
-          <input type="text" className="form-control" id="password" placeholder="" {...register("password", { required: 'Password is required' })} />
+          <input type="password" className="form-control" id="password" placeholder="" {...register("password", { required: 'Password is required' })} />
 
           {
             errors.password && <ErrorMessage errors={errors} name="password" />
+          }
+
+        </div>
+
+        <div className="mb-3">
+
+          <label htmlFor="email" className="form-label">Email</label>
+
+          <input type="email" className="form-control" id="email" placeholder="" {...register("email", { required: 'Email is required' })} />
+
+          {
+            errors.email && <ErrorMessage errors={errors} name="email" />
           }
 
         </div>
@@ -54,7 +67,7 @@ export const LoginPage = () => {
 
         <button type="submit" className="btn btn-primary w-100 mt-2 mb-2">Log in</button>
 
-        <div className='text-center'>Or sign up <a href="#" className="link-secondary text-decoration-none">here</a></div>
+        <div className='text-center'>Or sign up <Link to='/register' className="link-secondary text-decoration-none">here</Link></div>
 
       </form>
     </div>

@@ -1,0 +1,86 @@
+import { useParams } from "react-router-dom";
+import { capitalize } from "../../helpers";
+import { Loading } from "../../ui/components/Loading";
+import { useGetItem } from "../hooks/useGetItem";
+import { EffectsItemList, AttributeItemList } from "../components/ItemInfo";
+
+
+export const ItemPage = () => {
+    const { id_name } = useParams();
+    const {
+        isLoading,
+        name,
+        sprites,
+        category,
+        effect_entries,
+        flavor_text_entries,
+        cost,
+        attributes,
+        fling_effect,
+        fling_power
+    } = useGetItem(id_name);
+
+    return (
+        <>
+            {
+                !isLoading ?
+                    <>
+                        <h1>{capitalize(name)}</h1>
+                        <div className="row align-items-center m-0">
+                            <div className="col-12 col-md-2 text-center">
+                                {
+                                    sprites.default ?
+                                    <img src={sprites?.default} alt="" className="w-50" />
+                                    :
+                                    <span>Not available</span>
+                                }
+                            </div>
+                            <div className="col-12 col-md-10">
+                                <ul className="list-group">
+                                    <li className="list-group-item bg-transparent text-light">
+                                        <strong>Category: </strong> 
+                                        {category?.name}
+                                    </li>
+                                    <li className="list-group-item bg-transparent text-light">
+                                        <strong>Effects</strong>
+                                        {
+                                            effect_entries.length === 0 ?
+                                                <EffectsItemList effects={flavor_text_entries} type='optional' />
+                                                :
+                                                <EffectsItemList effects={effect_entries} type='default' />
+                                        }
+                                    </li>
+                                    <li className="list-group-item bg-transparent text-light">
+                                        <strong>Cost:</strong>  {cost}
+                                    </li>
+                                    {
+                                        attributes.length > 0 &&
+                                        <li className="list-group-item bg-transparent text-light">
+                                            <strong>Attributes</strong>
+                                            <AttributeItemList attributes={attributes}/>
+                                        </li>
+                                    }
+                                    {
+                                        fling_effect && fling_power &&
+                                        <li className="list-group-item bg-transparent text-light">
+                                            <strong>Fling</strong>
+                                            <ul>
+                                                <li>
+                                                    <strong>Fling power:</strong>  {fling_power}
+                                                </li>
+                                                <li>
+                                                    <strong>Fling effect:</strong> {fling_effect?.name}
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    </>
+                    :
+                    <Loading />
+            }
+        </>
+    )
+}
