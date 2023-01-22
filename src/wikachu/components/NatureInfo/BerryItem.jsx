@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
+import { capitalize } from "../../../helpers";
 
-export const BerryItem = ({name,image}) => {
+export const BerryItem = ({ name, image }) => {
 
     const navigate = useNavigate();
 
@@ -9,13 +10,13 @@ export const BerryItem = ({name,image}) => {
     }
 
     return (
-        <div className="col-3 col-sm-2 col-md-1">
+        <div className="col-4 col-sm-3 col-md-2 col-lg-1">
             <button type="button" className="btn text-light" onClick={() => onClickToItem(name)}>
                 <div>
                     <img src={image} alt={name} />
                 </div>
                 <div>
-                    {name}
+                    {capitalize(name)}
                 </div>
             </button>
         </div>
