@@ -9,7 +9,7 @@ import { FaGoogle } from 'react-icons/fa';
 export const SingUpPage = () => {
     const { register, handleSubmit, formState: { errors }, setError } = useForm({
         defaultValues: {
-            username: '',
+            displayName: '',
             password: '',
             email: '',
             google: '',
@@ -18,13 +18,13 @@ export const SingUpPage = () => {
     const { login, signUpWithGoogle } = useContext(AuthContext);
     const navigate = useNavigate();
 
-    const onSubmit = async ({ username, password, email }) => {
+    const onSubmit = async ({ displayName, password, email }) => {
 
-        const { type, message } = await createUser({username,password,state:true,email});
+        const { type, message } = await createUser({displayName,password,state:true,email});
     
         if (type && message) setError(type, { type: "custom", message })
         else{
-            login(username,password); 
+            login(email,password); 
             navigate('/');
         }
     };
@@ -41,12 +41,12 @@ export const SingUpPage = () => {
             <form className='col-10 col-md-6 col-lg-3 col-xl-2 mx-auto' onSubmit={handleSubmit(onSubmit)}>
                 <div className="mb-3">
 
-                    <label htmlFor="username" className="form-label">Username</label>
+                    <label htmlFor="displayName" className="form-label">Enter a display name</label>
 
-                    <input type="text" className="form-control" id="username" placeholder="" {...register("username", { required: 'Username is required' })} />
+                    <input type="text" className="form-control" id="displayName" placeholder="" {...register("displayName", { required: 'Display name is required' })} />
 
                     {
-                        errors.username && <ErrorMessage errors={errors} name="username" />
+                        errors.displayName && <ErrorMessage errors={errors} name="displayName" />
                     }
 
                 </div>

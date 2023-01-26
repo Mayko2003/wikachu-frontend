@@ -9,7 +9,7 @@ export const LoginPage = () => {
 
   const { register, handleSubmit, formState: { errors }, setError } = useForm({
     defaultValues: {
-      username: '',
+      email: '',
       password: '',
       google: '',
     }
@@ -18,9 +18,9 @@ export const LoginPage = () => {
 
   const navigate = useNavigate();
 
-  const onSubmit = async ({ username, password }) => {
+  const onSubmit = async ({ email, password }) => {
 
-    const { type, message } = await login(username, password);
+    const { type, message } = await login(email, password);
 
     if (type && message) setError(type, { type: "custom", message })
     else navigate('/');
@@ -38,12 +38,12 @@ export const LoginPage = () => {
       <form className='col-10 col-md-6 col-lg-3 col-xl-2 mx-auto' onSubmit={handleSubmit(onSubmit)}>
         <div className="mb-3">
 
-          <label htmlFor="username" className="form-label">Username</label>
+          <label htmlFor="email" className="form-label">Email</label>
 
-          <input type="text" className="form-control" id="username" placeholder="" {...register("username", { required: 'Username is required' })} />
+          <input type="email" className="form-control" id="email" placeholder="" {...register("email", { required: 'Email is required' })} />
 
           {
-            errors.username && <ErrorMessage errors={errors} name="username" /> 
+            errors.email && <ErrorMessage errors={errors} name="email" /> 
           }
 
         </div>
