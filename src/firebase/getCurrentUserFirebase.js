@@ -4,7 +4,7 @@ import { FirebaseAuth } from "./config";
 export const getCurrentUserFirebase = () => {
     const user = FirebaseAuth.currentUser;
     if (user) {
-        return { username: user.displayName, id: user.uid };
+        return { displayName: user.displayName, id: user.uid };
     } else {
         return new Promise(resolve => {
             if (user) {
@@ -13,7 +13,7 @@ export const getCurrentUserFirebase = () => {
                 const unsubscribe = onAuthStateChanged(FirebaseAuth, function (user) {
                     unsubscribe();
                     if (user) {
-                        resolve({ username: user.displayName, id: user.uid });
+                        resolve({ displayName: user.displayName, id: user.uid });
                     } else {
                         resolve(false);
                     }
