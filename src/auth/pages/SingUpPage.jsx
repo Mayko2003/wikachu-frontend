@@ -4,24 +4,23 @@ import { useNavigate } from "react-router-dom";
 import { createUser } from "../../api/backend/user";
 import { ErrorMessage } from "../components";
 import { AuthContext } from "../context";
-import { FaGoogle } from 'react-icons/fa'
-
-
+import { FaGoogle } from 'react-icons/fa';
 
 export const SingUpPage = () => {
     const { register, handleSubmit, formState: { errors }, setError } = useForm({
         defaultValues: {
             username: '',
             password: '',
+            email: '',
             google: '',
         }
     });
     const { login, signUpWithGoogle } = useContext(AuthContext);
     const navigate = useNavigate();
 
-    const onSubmit = async ({ username, password }) => {
+    const onSubmit = async ({ username, password, email }) => {
 
-        const { type, message } = await createUser({username,password,state:true});
+        const { type, message } = await createUser({username,password,state:true,email});
     
         if (type && message) setError(type, { type: "custom", message })
         else{
@@ -30,9 +29,10 @@ export const SingUpPage = () => {
         }
     };
 
-    const submitGoogle = async() => {
-        const { error } = await signUpWithGoogle();
-        if(error) setError('google',{type:'custom',message: error});
+    const onSubmitGoogle = async() => {
+        const { type, message } = await signUpWithGoogle();
+        if(message) setError(type,{type:'custom',message});
+        else navigate('/');
     }
 
     return (
@@ -62,6 +62,17 @@ export const SingUpPage = () => {
                     }
 
                 </div>
+                <div className="mb-3">
+
+                    <label htmlFor="email" className="form-label">Email</label>
+
+                    <input type="email" className="form-control" id="email" placeholder="" {...register("email", { required: 'Email is required' })} />
+
+                    {
+                        errors.email && <ErrorMessage errors={errors} name="email" />
+                    }
+
+                </div>
 
                 <button type="submit" className="btn btn-primary w-100 mt-2 mb-2">Sign Up</button>
 
@@ -69,7 +80,7 @@ export const SingUpPage = () => {
 
             </form>
             <div className="text-center">
-                    <button className="btn btn-primary" onClick={submitGoogle} {...register("google")}><FaGoogle size={23}/></button>
+                    <button className="btn btn-primary" onClick={onSubmitGoogle} {...register("google")}><FaGoogle size={23}/></button>
                     {
                         errors.google && <ErrorMessage errors={errors} name="google" />
                     }
