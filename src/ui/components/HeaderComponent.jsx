@@ -77,42 +77,46 @@ export const Header = () => {
                                 >
                                     Strategies
                                 </NavLink>
-                            </li>
-                            <li className="nav-item ms-lg-auto">
-                                <NavLink
-                                    className={({ isActive }) => `nav-item nav-link ${isActive ? 'active' : ''}`}
-                                    to="/login"
-                                >
-                                    Log in
-                                </NavLink>
-                            </li>
-                            <li className="nav-item">
-                                <NavLink
-                                    className={({ isActive }) => `nav-item nav-link ${isActive ? 'active' : ''}`}
-                                    to="/register"
-                                >
-                                    Sign up
-                                </NavLink>
-                            </li>
-                            <li className="nav-item">
-                                {
-                                    logged &&
-                                    <span className="nav-item nav-link">
-                                        {user?.username}
-                                    </span>
-                                }
-                            </li>
-                            <li className="nav-item">
-                                {
-                                    logged &&
-                                    <button
-                                        className='nav-item nav-link btn'
-                                        onClick={onLogout}
-                                    >
-                                        <BiExit color="red"/>
-                                    </button>
-                                }
-                            </li>
+                            </li>  
+                            {
+                                !logged && 
+                                <>
+                                    <li className="nav-item ms-lg-auto">
+                                        <NavLink
+                                            className={({ isActive }) => `nav-item nav-link ${isActive ? 'active' : ''}`}
+                                            to="/login"
+                                        >
+                                        Log in
+                                        </NavLink>
+                                    </li>
+                                    <li className="nav-item">
+                                        <NavLink
+                                            className={({ isActive }) => `nav-item nav-link ${isActive ? 'active' : ''}`}
+                                            to="/register"
+                                        >
+                                        Sign up
+                                        </NavLink>
+                                    </li>
+                                </>
+                            }
+                            {
+                                logged &&
+                                <>
+                                    <li className="nav-item ms-lg-auto">
+                                        <span className="nav-item nav-link">
+                                            {user?.username}
+                                        </span>
+                                    </li>
+                                    <li className="nav-item">
+                                        <button
+                                            className='nav-item nav-link btn'
+                                            onClick={onLogout}
+                                        >
+                                            <BiExit color="red"/>
+                                        </button>
+                                    </li>
+                                </>
+                            }
                         </ul>
                     </div>
                 </div>
