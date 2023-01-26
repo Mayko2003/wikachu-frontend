@@ -1,16 +1,24 @@
 import { useReducer } from "react";
 import { getUserLogged, loginUser } from "../../api/backend/user";
-import { getCurrentUserFirebase } from "../../firebase/getCurrentUserFirebase";
+import { createUserFirebase } from "../../api/backend/user/createUserFirebase";
+import { userExists } from "../../api/backend/user/userExists";
 import { signInWithGoogle } from "../../firebase/providers";
 import { AuthContext, authReducer } from "./";
 import { types } from "../types/types";
+import { getUserTokenId } from "../../firebase/getUserTokenId";
+import { generatePassword, verifiyTokenExpiration } from "../helpers";
+
+
+const refreshToken = async () => {
+    const { idToken, expirationTime} = await getUserTokenId();
+    localStorage.setItem('token', JSON.stringify({value:idToken,type:'firebase',expirationTime}));
+    return {idToken,expirationTime};
+}
 
 const init = () => {
     const token = JSON.parse(localStorage.getItem('token'));
-    const uid = JSON.parse(localStorage.getItem('uid'));
-
     return {
-        logged: !!token || !!uid,
+        logged: !!token,
     }
 }
 
@@ -28,7 +36,7 @@ export const AuthProvider = ({ children }) => {
         const { token , message, type} = await loginUser(username, password);
 
         if(token) {
-            localStorage.setItem('token', JSON.stringify(token));
+            localStorage.setItem('token', JSON.stringify({value:token,type:'default'}));
             dispatch(action);
         }
 
@@ -38,7 +46,6 @@ export const AuthProvider = ({ children }) => {
 
     const logout = () => {
         localStorage.removeItem('token');
-        localStorage.removeItem('uid');
         const action = {
             type: types.logout,
         };
@@ -48,20 +55,31 @@ export const AuthProvider = ({ children }) => {
     const getUser = async () => {
         if (!authState.logged) return undefined
 
-        const token = JSON.parse(localStorage.getItem('token'));
-        const uid = JSON.parse(localStorage.getItem('uid'));
+        const { value, expirationTime } = JSON.parse(localStorage.getItem('token'));
 
-        if (uid) {
-            return await getCurrentUserFirebase();
-        };
-
-        return await getUserLogged(token);
+        if(expirationTime){
+            if(verifiyTokenExpiration(expirationTime)){
+                const {expirationTime,idToken} = await refreshToken();
+                return await getUserLogged(idToken);
+            }
+        }
+        return await getUserLogged(value);
     }
 
     const getToken = () => {
         if (!authState.logged) return undefined
-
-        return JSON.parse(localStorage.getItem('token'));
+        
+        const { value, expirationTime } = JSON.parse(localStorage.getItem('token'));
+        
+        if(expirationTime){
+            if(verifiyTokenExpiration(expirationTime)){
+                refreshToken().then(({expirationTime,idToken})=>{
+                    return idToken;
+                });
+            }
+        }
+    
+        return value;
     }
 
     const signUpWithGoogle = async () => {
@@ -73,17 +91,50 @@ export const AuthProvider = ({ children }) => {
         }
 
         if (ok) {
-            localStorage.setItem('uid', JSON.stringify(data.uid));
+            const {exists,type,message} = await userExists(data.accessToken);
+            if(exists){    
+                return {type,message}
+            }
+            localStorage.setItem('token', JSON.stringify({value:data.accessToken,type:'firebase',expirationTime:data.stsTokenManager.expirationTime}));
+            createUserFirebase(data.accessToken,{
+                username: data.displayName,
+                password: generatePassword(),
+                email: data.email,
+                state: true,
+            });
             dispatch(action);
         }else{
-            return {error};
+            return {type:'google',message: error};
+        }
+
+        return {};
+    }
+
+    const loginInWithGoogle = async () => {
+        const { ok, data, error } = await signInWithGoogle();
+
+        const action = {
+            type: types.login,
+            payload: true
+        }
+
+        if (ok) {
+            const {exists,type,message} = await userExists(data.accessToken);
+            if(exists){    
+                localStorage.setItem('token', JSON.stringify({value:data.accessToken,type:'firebase',expirationTime:data.stsTokenManager.expirationTime}));
+                dispatch(action);
+            }else{
+                return { type, message };
+            }
+        }else{
+            return {type:'google',message: error};
         }
 
         return {};
     }
 
     return (
-        <AuthContext.Provider value={{ ...authState, login, logout, getUser, getToken, signUpWithGoogle }}>
+        <AuthContext.Provider value={{ ...authState, login, logout, getUser, getToken, signUpWithGoogle, loginInWithGoogle }}>
             {children}
         </AuthContext.Provider>
     )
