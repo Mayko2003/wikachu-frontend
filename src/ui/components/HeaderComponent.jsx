@@ -24,6 +24,8 @@ export const Header = () => {
         navigate('/', {
             replace: true
         })
+        // refresh page
+        window.location.reload();
     }
     
     return (
