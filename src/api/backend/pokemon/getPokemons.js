@@ -7,7 +7,7 @@ export const getPokemons = async () => {
         const response = await fetch(
             `${env.VITE_BACKEND_URL}/pokemon`
         );
-        const data = await response.json();
+        const {data} = await response.json();
         return data;
     }
     catch (error) {

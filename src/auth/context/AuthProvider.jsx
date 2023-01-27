@@ -26,14 +26,14 @@ export const AuthProvider = ({ children }) => {
 
     const [authState, dispatch] = useReducer(authReducer, {}, init);
 
-    const login = async (username = '', password = '') => {
+    const login = async (email = '', password = '') => {
 
         const action = {
             type: types.login,
             payload: true
         }
 
-        const { token , message, type} = await loginUser(username, password);
+        const { token , message, type} = await loginUser(email, password);
 
         if(token) {
             localStorage.setItem('token', JSON.stringify({value:token,type:'default'}));
@@ -97,7 +97,7 @@ export const AuthProvider = ({ children }) => {
             }
             localStorage.setItem('token', JSON.stringify({value:data.accessToken,type:'firebase',expirationTime:data.stsTokenManager.expirationTime}));
             createUserFirebase(data.accessToken,{
-                username: data.displayName,
+                displayName: data.displayName,
                 password: generatePassword(),
                 email: data.email,
                 state: true,

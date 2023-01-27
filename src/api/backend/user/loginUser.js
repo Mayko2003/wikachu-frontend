@@ -1,6 +1,6 @@
 import { getEnviroments } from "../../../helpers/getEnvironments";
 
-export const loginUser = async (username,password) => {
+export const loginUser = async (email,password) => {
     try {
         const env = getEnviroments();
         const options = {
@@ -9,7 +9,7 @@ export const loginUser = async (username,password) => {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                username,
+                email,
                 password
             })
         }

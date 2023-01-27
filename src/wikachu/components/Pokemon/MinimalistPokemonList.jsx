@@ -1,11 +1,12 @@
 import { Loading } from "../../../ui/components"
-import { useGetPokemons } from "../../hooks/useGetPokemons"
+import { useGetPokemonsByUrls } from "../../hooks"
 import { MinimalistPokemonCard } from "./MinimalistPokemonCard"
 
 
 export const MinimalistPokemonList = ({ pokemons }) => {
 
-    const { data, isLoading } = useGetPokemons(pokemons)
+    const { data, isLoading } = useGetPokemonsByUrls(pokemons)
+
 
     return (
         !isLoading ?
