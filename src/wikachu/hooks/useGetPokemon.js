@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { getPokemon } from "../../api/pokemonAPI/Pokemon";
 
+
+//get pokemon from the pokemon api
 export const useGetPokemon = (id) => {
     
     const [pokemon, setPokemon] = useState({});
