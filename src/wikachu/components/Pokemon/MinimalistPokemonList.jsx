@@ -7,6 +7,7 @@ export const MinimalistPokemonList = ({ pokemons }) => {
 
     const { data, isLoading } = useGetPokemonsByUrls(pokemons)
 
+
     return (
         !isLoading ?
             <div className="row mx-3">
