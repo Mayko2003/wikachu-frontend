@@ -6,7 +6,7 @@ export const getPopular = async () => {
         const response = await fetch(
             `${env.VITE_BACKEND_URL}/pokemon/popular`
         );
-        const data = await response.json();
+        const {data} = await response.json();
         return data;
     }
     catch (error) {
