@@ -86,7 +86,7 @@ export const Header = () => {
                                     <li className="nav-item ms-lg-auto">
                                         <NavLink
                                             className={({ isActive }) => `nav-item nav-link ${isActive ? 'active' : ''}`}
-                                            to="/login"
+                                            to="/auth/login"
                                         >
                                         Log in
                                         </NavLink>
@@ -94,7 +94,7 @@ export const Header = () => {
                                     <li className="nav-item">
                                         <NavLink
                                             className={({ isActive }) => `nav-item nav-link ${isActive ? 'active' : ''}`}
-                                            to="/register"
+                                            to="/auth/register"
                                         >
                                         Sign up
                                         </NavLink>
