@@ -1,23 +1,24 @@
 import { Routes, Route } from "react-router-dom"
-import { LoginPage } from "../auth/pages/LoginPage"
+import { AuthRoutes } from "../auth/routes"
 import { Footer, Header } from '../ui/components'
 import { WikachuRoutes } from "../wikachu/routes/WikachuRoutes"
+import { PublicRoute } from "./PublicRoute"
 
 export const AppRouter = () => {
-
-
-
     return (
         <>
             <Header />
-            
+
             <Routes>
-                {/* TODO: add login and register routes */}
-                <Route path="login" element={<LoginPage />}/>
+                <Route path="/*" element={
+                    <WikachuRoutes />
+                } />
 
-                <Route path="/*" element={<WikachuRoutes />} />
-
-
+                <Route path="/auth/*" element={
+                    <PublicRoute restricted={true}>
+                        <AuthRoutes />
+                    </PublicRoute>
+                } />
             </Routes>
 
             <Footer />
