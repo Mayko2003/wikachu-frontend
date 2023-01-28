@@ -11,16 +11,6 @@ export const AppRouter = () => {
             <Header />
 
             <Routes>
-                {/* TODO: add login and register routes */}
-                <Route path="login" element={<LoginPage />} />
-
-                <Route path="register" element={<SingUpPage />} />
-
-
-                <Route path="/*" element={<WikachuRoutes />} />
-            </Routes>
-
-            <Routes>
                 <Route path="/*" element={
                     <WikachuRoutes />
                 } />
