@@ -26,6 +26,13 @@ Initialize your environment file, we provide an .env.example file which includes
 
 NOTE: for backend url environment var you can use our backend, you can see it in [Wikachu Backend](https://github.com/Mayko2003/wikachu-backend)
 
+## Getting Started
+
+Now you are able to run the app.
+```
+npm run dev
+```
+
 ## About Us
 
 We are from Argentina and we are developing this app mainly to simulate an actual development stage and practice with React framework. The members of the team are:
