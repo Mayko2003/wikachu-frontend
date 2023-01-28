@@ -23,7 +23,18 @@ body {
     height: 3em;
     width: 3em;
 }
+.glass-card {
+    /* From https://css.glass */
+   
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    
+    border: 1px solid rgba(63, 39, 89, 0.21);
 
+    background: rgba(63, 39, 89, 0.24) !important;
+    backdrop-filter: blur(5.2px);
+    -webkit-backdrop-filter: blur(5.2px);
+}
 
 /* Buttons */
 .btn-wk-primary{
@@ -32,4 +43,10 @@ body {
 }
 .btn-wk-primary:hover{
     opacity: 0.8;
+}
+
+/* tables  */
+.table-icon{
+    width: 2em;
+    height: 2em;
 }
