@@ -24,6 +24,8 @@ export const Header = () => {
         navigate('/', {
             replace: true
         })
+        // refresh page
+        window.location.reload();
     }
     
     return (
@@ -104,7 +106,7 @@ export const Header = () => {
                                 <>
                                     <li className="nav-item ms-lg-auto">
                                         <span className="nav-item nav-link">
-                                            {user?.username}
+                                            {user?.displayName}
                                         </span>
                                     </li>
                                     <li className="nav-item">
@@ -112,7 +114,7 @@ export const Header = () => {
                                             className='nav-item nav-link btn'
                                             onClick={onLogout}
                                         >
-                                            <BiExit color="red"/>
+                                            <BiExit color="yellow" size={'1.5em'} />
                                         </button>
                                     </li>
                                 </>

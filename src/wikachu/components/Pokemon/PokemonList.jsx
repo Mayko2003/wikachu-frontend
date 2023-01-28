@@ -1,11 +1,11 @@
-import { usePokemon } from "../../hooks"
+import { useGetPokemonsByIds } from "../../hooks"
 import { PokemonCard } from "./"
 import { Loading } from '../../../ui/components'
 
 
-export const PokemonList = ({ amount }) => {
+export const PokemonList = ({ list }) => {
 
-    const { data, isLoading } = usePokemon(amount);
+    const { data, isLoading } = useGetPokemonsByIds(list);
 
 
     return (
