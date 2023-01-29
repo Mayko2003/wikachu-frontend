@@ -17,6 +17,7 @@ export const useGetItemsByIds = (list) => {
             id: data.id,
             name: data.name,
             image: data.sprites.default,
+            likes: item.likes,
             _id: item._id
         }
         return it
