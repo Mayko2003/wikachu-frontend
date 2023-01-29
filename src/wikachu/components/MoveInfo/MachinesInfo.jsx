@@ -1,6 +1,6 @@
 import { useContext } from "react"
 import { MoveContext } from "../../context/MoveContext"
-import { useGetMachines } from "../../hooks/useGetMachines"
+import { useGetMachines } from "../../hooks"
 import { capitalize, splitCharacter } from "../../../helpers"
 
 
