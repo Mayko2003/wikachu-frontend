@@ -1,5 +1,5 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
-import { PokemonPage, HomePage, ItemPage, NaturePage, SearchPage } from '../pages'
+import { PokemonPage, HomePage, ItemPage, NaturePage, SearchPage, ItemsPage } from '../pages'
 import { PokedexPage } from '../pages/PokedexPage'
 import { Page404 } from '../../ui/pages/Page404'
 import { MovePage } from '../pages/MovePage'
@@ -17,6 +17,8 @@ export const WikachuRoutes = () => {
             <Route path='/nature/:id_name/*' element={<NaturePage />} />
 
             <Route path='/pokedex' element={<PokedexPage />} />
+
+            <Route path='items' element={<ItemsPage />} />
 
             <Route path='/move/:id_name/*' element={
                 <MoveProvider>
