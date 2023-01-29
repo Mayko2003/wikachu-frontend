@@ -24,7 +24,7 @@ export const HomePage = () => {
             <div className='mt-5'>
                 <h1 className='ms-lg-5 text-center text-lg-start mb-5'>Popular Pokemons</h1>
                 {
-                    popularList && <PokemonList list={popularList} />
+                    popularList && <PokemonList list={popularList} type={'home'} />
                 }
             </div>
 
