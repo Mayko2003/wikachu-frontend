@@ -37,7 +37,7 @@ export const useGetPokemonsByIds = (listPokemons = [], type) => {
     const handleLoadMore = async () => {
 
         let promises = []
-        for (let i = pokemons.data.length + 1; i <= pokemons.data.length + 12 && i < listPokemons.length; i++) {
+        for (let i = pokemons.data.length; i < pokemons.data.length + 12 && i < listPokemons.length; i++) {
             promises = [...promises, fetchPokemon(listPokemons[i])]
         }
 
