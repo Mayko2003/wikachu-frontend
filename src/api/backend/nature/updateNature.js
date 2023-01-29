@@ -1,6 +1,6 @@
 import { getEnviroments } from "../../../helpers/getEnvironments";
 
-const updateNature = async (nature) => {
+export const updateNature = async (nature, token) => {
     try {
         const env = getEnviroments();
 
@@ -8,12 +8,13 @@ const updateNature = async (nature) => {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
+                'Authorization': `Bearer ${token}`
             },
             body: JSON.stringify(nature),
         }
         const response = await fetch(`${env.VITE_BACKEND_URL}/nature`, options);
 
-        const { data } = await response.json();
+        const data = await response.json();
 
         return data;
     } catch (error) {
