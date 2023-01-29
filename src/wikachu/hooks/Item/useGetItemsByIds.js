@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { getItem } from "../../../api/pokemonAPI/Pokemon";
 
 
-export const useGetItemsByIds = (list) => {
+export const useGetItemsByIds = (list, type) => {
 
 
     const [state, setstate] = useState({
@@ -37,9 +37,9 @@ export const useGetItemsByIds = (list) => {
         return items
     }
 
-    const handleLoadMore = async() => {
+    const handleLoadMore = async () => {
         let promises = []
-        for (let i = state.data.length; i < state.data.length+12 && i < list.length ; i++) {
+        for (let i = state.data.length; i < state.data.length + 12 && i < list.length; i++) {
             promises = [...promises, fetchItem(list[i])]
 
         }
@@ -57,7 +57,7 @@ export const useGetItemsByIds = (list) => {
         getItems().then((items) => {
             setstate({
                 isLoading: false,
-                data: items
+                data: type === 'home'? items.sort((a, b) => b.likes - a.likes) : items.sort((a, b) => a.id - b.id)
             })
         })
     }, [list])
