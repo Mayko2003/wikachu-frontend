@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom"
-import { useGetMove } from "../hooks/useGetMove"
+import { useGetMove } from "../hooks"
 import { Loading } from "../../ui/components";
 import { capitalize } from "../../helpers";
 import { MoveRoutes } from "../routes/MoveRoutes";
