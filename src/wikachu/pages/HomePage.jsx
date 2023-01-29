@@ -1,10 +1,13 @@
 import { PokemonList } from '../components/Pokemon'
-import { useGetPopularPokemons } from '../hooks'
+import { ItemList } from '../components/Item'
+import { useGetPopularItems, useGetPopularPokemons } from '../hooks'
 import runningPikachu from '/assets/running-pikachu.gif'
 
 export const HomePage = () => {
 
     const popularList = useGetPopularPokemons()
+
+    const itemPopularList = useGetPopularItems()
 
     return (
         <>
@@ -25,6 +28,10 @@ export const HomePage = () => {
                 <h1 className='ms-lg-5 text-center text-lg-start mb-5'>Popular Pokemons</h1>
                 {
                     popularList && <PokemonList list={popularList} type={'home'} />
+                }
+                <h1 className='ms-lg-5 text-center text-lg-start mb-5'>Popular Items</h1>
+                {
+                    itemPopularList && <ItemList list={itemPopularList} type={'home'} />
                 }
             </div>
 
