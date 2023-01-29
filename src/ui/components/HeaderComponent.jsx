@@ -51,7 +51,7 @@ export const Header = () => {
                             <li className="nav-item">
                                 <NavLink
                                     className={({ isActive }) => `nav-item nav-link ${isActive ? 'active' : ''}`}
-                                    to="/move"
+                                    to="/moves"
                                 >
                                     Moves
                                 </NavLink>
