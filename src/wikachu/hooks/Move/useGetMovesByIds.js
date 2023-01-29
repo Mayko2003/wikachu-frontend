@@ -24,7 +24,7 @@ export const useGetMovesByIds = (list) => {
         return mov
     }
 
-    const getItems = async () => {
+    const getMoves = async () => {
         if (!list) return;
 
         let promises = []
@@ -55,7 +55,7 @@ export const useGetMovesByIds = (list) => {
 
 
     useEffect(() => {
-        getItems().then((moves) => {
+        getMoves().then((moves) => {
             setstate({
                 isLoading: false,
                 data: moves
