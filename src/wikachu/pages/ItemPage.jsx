@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { capitalize, splitCharacter } from "../../helpers";
 import { Loading } from "../../ui/components/Loading";
-import { useGetItem } from "../hooks/useGetItem";
+import { useGetItem } from "../hooks";
 import { EffectsItemList, AttributeItemList } from "../components/ItemInfo";
 
 
