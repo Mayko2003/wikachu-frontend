@@ -4,7 +4,7 @@ export const getNature = async (id) => {
     try {
         const env = getEnviroments();
 
-        const response = await fetch(`${env.VITE_BACKEND_URL}/nature/${id}`);
+        const response = await fetch(`${env.VITE_BACKEND_URL}/nature/find/${id}`);
         const { data } = await response.json();
 
         return data;

@@ -4,7 +4,7 @@ export const getMove = async (id) => {
     try {
         const env = getEnviroments();
 
-        const response = await fetch(`${env.VITE_BACKEND_URL}/move/${id}`);
+        const response = await fetch(`${env.VITE_BACKEND_URL}/move/find/${id}`);
         const { data } = await response.json();
 
         return data;
