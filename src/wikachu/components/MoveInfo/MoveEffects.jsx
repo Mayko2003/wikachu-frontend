@@ -12,7 +12,7 @@ export const MoveEffects = () => {
             <div className="list-group mx-2">
                 <li className="list-group-item bg-transparent text-white">
                     <strong className='text-muted me-2 my-auto'>Effect: </strong>
-                    {move.effect_entries[0].effect}
+                    {move.effect_entries[0]?.effect}
                 </li>
                 <li className="list-group-item bg-transparent text-white">
                     <strong className='text-muted me-2 my-auto'>Changes </strong>
