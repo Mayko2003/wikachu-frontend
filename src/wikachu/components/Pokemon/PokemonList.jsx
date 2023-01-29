@@ -5,7 +5,7 @@ import { Loading } from '../../../ui/components'
 
 export const PokemonList = ({ list, type }) => {
 
-    const { data, isLoading, handleLoadMore } = useGetPokemonsByIds(list);
+    const { data, isLoading, handleLoadMore } = useGetPokemonsByIds(list, type);
 
 
     return (
