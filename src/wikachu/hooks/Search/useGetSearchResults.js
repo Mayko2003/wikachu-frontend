@@ -1,4 +1,4 @@
-import { getResults } from "../../api/backend/"
+import { getResults } from "../../../api/backend"
 import { useState, useEffect } from 'react'
 
 export const useGetSearchResults = (query) => {

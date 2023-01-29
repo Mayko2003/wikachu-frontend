@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { getItem } from "../../api/pokemonAPI/Pokemon";
+import { getItem } from "../../../api/pokemonAPI/Pokemon";
 
 export const useBerries = (berries) => {
 

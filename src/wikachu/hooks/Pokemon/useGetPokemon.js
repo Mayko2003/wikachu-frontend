@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getPokemon, getSpecie } from "../../api/pokemonAPI/Pokemon";
+import { getPokemon, getSpecie } from "../../../api/pokemonAPI/Pokemon";
 import { useNavigate } from "react-router-dom";
 
 

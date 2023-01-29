@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
-import { getPokemons, getPopular } from '../../api/backend/pokemon'
-import { getPokemon } from '../../api/pokemonAPI/Pokemon'
+import { getPokemon } from '../../../api/pokemonAPI/Pokemon'
 
 
 //get pokemons from a list of ids

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom";
-import { getItem } from "../../api/pokemonAPI/Pokemon";
+import { getItem } from "../../../api/pokemonAPI/Pokemon";
 
 export const useGetItem = (id) => {
   const [item, setItem] = useState({});

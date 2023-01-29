@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { getPopular } from '../../api/backend/pokemon'
+import { getPopular } from '../../../api/backend/pokemon'
 
 export const useGetPopularPokemons = () => {
     const [list, setList] = useState(null)

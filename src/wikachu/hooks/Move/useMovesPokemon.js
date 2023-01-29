@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
-import { getMovement } from "../../api/pokemonAPI/Move"
+import { getMovement } from "../../../api/pokemonAPI/Move"
 
-
+//get moves from name
 export const useMovesPokemon = (moves) => {
 
     const [movesInfo, setMovesInfo] = useState({

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { getBerryFlavor } from "../../api/pokemonAPI/Berry/getBerryFlavor";
-import { getNature } from "../../api/pokemonAPI/Pokemon";
+import { getBerryFlavor } from "../../../api/pokemonAPI/Berry/getBerryFlavor";
+import { getNature } from "../../../api/pokemonAPI/Pokemon";
 
 export const useGetNature = (id) => {
     const [nature, setNature] = useState({});

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { getPokemons } from '../../api/backend'
+import { getPokemons } from '../../../api/backend'
 
 export const useGetAllPokemons = () => {
 

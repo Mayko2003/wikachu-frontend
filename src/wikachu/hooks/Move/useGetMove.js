@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react"
-import { getMovement } from '../../api/pokemonAPI/Move'
-import { MoveContext } from "../context/MoveContext"
+import { getMovement } from '../../../api/pokemonAPI/Move'
+import { MoveContext } from "../../context/MoveContext"
 
 export const useGetMove = (id_name) => {
 
