@@ -11,7 +11,7 @@ export const useGetItemsByIds = (list) => {
     })
 
 
-    const asd = async (item) => {
+    const fetchItem = async (item) => {
         const data = await getItem(item.name)
         const it = {
             id: data.id,
@@ -27,7 +27,7 @@ export const useGetItemsByIds = (list) => {
 
         let promises = []
         for (let i = 1; i <= 12; i++) {
-            promises = [...promises, asd(list[i])]
+            promises = [...promises, fetchItem(list[i])]
 
         }
 
@@ -39,7 +39,7 @@ export const useGetItemsByIds = (list) => {
     const handleLoadMore = async() => {
         let promises = []
         for (let i = state.data.length+1; i <= state.data.length+12; i++) {
-            promises = [...promises, asd(list[i])]
+            promises = [...promises, fetchItem(list[i])]
 
         }
 
