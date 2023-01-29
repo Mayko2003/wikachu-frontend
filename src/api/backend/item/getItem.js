@@ -4,7 +4,7 @@ export const getItem = async (id) => {
     try {
         const env = getEnviroments();
 
-        const response = await fetch(`${env.VITE_BACKEND_URL}/item/${id}`);
+        const response = await fetch(`${env.VITE_BACKEND_URL}/item/find/${id}`);
         const { data } = await response.json();
 
         return data;

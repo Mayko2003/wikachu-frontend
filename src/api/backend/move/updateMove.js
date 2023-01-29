@@ -12,7 +12,7 @@ export const updateMove = async (move, token) => {
             },
             body: JSON.stringify(move),
         }
-        const response = await fetch(`${env.VITE_BACKEND_URL}/move`, options);
+        const response = await fetch(`${env.VITE_BACKEND_URL}/move/update/${move._id}`, options);
 
         const data = await response.json();
 

@@ -13,7 +13,7 @@ export const updateItem = async (item, token) => {
             body: JSON.stringify(item),
             
         }
-        const response = await fetch(`${env.VITE_BACKEND_URL}/item`, options);
+        const response = await fetch(`${env.VITE_BACKEND_URL}/item/update/${item._id}`, options);
 
         const data = await response.json();
 

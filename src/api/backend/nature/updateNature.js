@@ -12,7 +12,7 @@ export const updateNature = async (nature, token) => {
             },
             body: JSON.stringify(nature),
         }
-        const response = await fetch(`${env.VITE_BACKEND_URL}/nature`, options);
+        const response = await fetch(`${env.VITE_BACKEND_URL}/nature/update/${nature._id}`, options);
 
         const data = await response.json();
 
