@@ -10,11 +10,15 @@ export const PokemonCard = ({ pokemon }) => {
 
 
     const handlePokemonClick = (e) => {
+        if(e.target.disabled) return
         e.target.classList.add('animate__animated', 'animate__tada')
-
+        //disable element
+        e.target.disabled = true
 
         setTimeout(() => {
             e.target.classList.remove('animate__animated', 'animate__tada')
+            //enable element
+            e.target.disabled = false
         }, 1000)
     }
 

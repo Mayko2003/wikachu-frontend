@@ -1,6 +1,6 @@
 import { useState, useEffect, useReducer, useContext } from 'react'
 import { likeReducer } from '../context/likeReducer'
-import { checkFavourite, createFavourite, deleteFavourite } from '../../api/backend/favourite/'
+import { checkFavourite, createFavourite, deleteFavourite, manageLike } from '../../api/backend/favourite/'
 import { AuthContext } from '../../auth/context';
 import { types } from '../types/types';
 import { useNavigate } from 'react-router-dom';
@@ -29,22 +29,29 @@ export const useLike = (obj, type = 'Pokemon') => {
 
 
 
-        if (like) e.target.src = likeIcon = '/icons/unliked.png';
-        else e.target.src = likeIcon = '/icons/liked.png'
+        if (like) likeIcon = '/icons/unliked.png';
+        else likeIcon = '/icons/liked.png'
 
         if (!like) {
             e.target.classList.add('animate__animated', 'animate__bounce')
-
+            
 
             setTimeout(() => {
                 e.target.classList.remove('animate__animated', 'animate__bounce')
+                
             }, 1000)
         }
 
         const user = await getUser()
 
-        if (like) await deleteFavourite(user._id, obj, getToken())
-        else await createFavourite(user._id, obj, type, getToken())
+        if (like) {
+            await deleteFavourite(user._id, obj, getToken())
+            await manageLike({ ...obj, likes: obj.likes - 1 }, type, getToken())
+        }
+        else {
+            await createFavourite(user._id, obj, type, getToken())
+            await manageLike({ ...obj, likes: obj.likes + 1 }, type, getToken())
+        }
 
         dispatch({
             type: like ? types.delete : types.create
