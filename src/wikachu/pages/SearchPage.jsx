@@ -2,7 +2,7 @@ import { useLocation, useNavigate } from "react-router-dom"
 import queryString from 'query-string'
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "../../auth/components";
-import { useGetSearchResults } from "../hooks/useGetSearchResults";
+import { useGetSearchResults } from "../hooks";
 import { PokemonList } from "../components/Pokemon";
 
 export const SearchPage = () => {
