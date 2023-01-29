@@ -1,3 +1,5 @@
 export * from './useGetMachines'
 export * from './useGetMove'
 export * from './useMovesPokemon'
+export * from './useGetListMove'
+export * from './useGetMovesByIds'
