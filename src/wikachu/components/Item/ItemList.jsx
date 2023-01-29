@@ -19,7 +19,7 @@ export const ItemList = ({ list }) => {
                             ))
                         }
                         <div className="d-flex justify-content-center mt-4">
-                            <button className="text-center btn btn-warning text-light" onClick={handleLoadMore}>
+                            <button className="text-center btn btn-wk-primary text-light" onClick={handleLoadMore}>
                                 Load more
                             </button>
                         </div>
