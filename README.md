@@ -42,4 +42,4 @@ We are from Argentina and we are developing this app mainly to simulate an actua
 
 ## Contributing
 
-If you are an experienced developer and you see the project, we would appreciate so much your tips. 
+If you are an experienced developer and you see the project, we would appreciate so much your tips.
